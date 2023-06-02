@@ -31,31 +31,13 @@ func Manejadores(ctx context.Context, request events.APIGatewayProxyRequest) mod
 			return routers.Registro(ctx)
 		case "login": // listo
 			return routers.Login(ctx)
-		case "tweet": // listo
-			return routers.GraboTweet(ctx, claim)
-		case "altaRelacion": // listo
-			return routers.AltaRelacion(ctx, request, claim)
-		case "subirAvatar": // listo
-			return routers.UploadImage(ctx, "A", request, claim)
-		case "subirBanner": // listo
-			return routers.UploadImage(ctx, "B", request, claim)
 		}
 	case "GET":
 		switch ctx.Value(models.Key("path")).(string) {
 		case "verperfil": // listo
 			return routers.VerPerfil(request)
-		case "leoTweets": // listo
-			return routers.LeoTweets(request)
-		case "consultaRelacion": // listo
-			return routers.ConsultaRelacion(request, claim)
 		case "listaUsuarios": // listo
 			return routers.ListaUsuarios(request, claim)
-		case "leoTweetsSeguidores": // listo
-			return routers.LeoTweetsSeguidores(request, claim)
-		case "obtenerAvatar": // listo
-			return routers.ObtenerImagen(ctx, "A", request, claim)
-		case "obtenerBanner": // listo
-			return routers.ObtenerImagen(ctx, "B", request, claim)
 		}
 	case "PUT":
 		switch ctx.Value(models.Key("path")).(string) {

@@ -12,6 +12,7 @@ type User struct {
 	Email     string             `json:"email"`
 	CreatedAt time.Time          `bson:"created_at" json:"created_at"`
 	UpdatedAt time.Time          `bson:"updated_at,omitempty" json:"updated_at,omitempty"`
+	Password  string             `bson:"password" json:"password,omitempty"`
 }
 
 // lista de usuarios
