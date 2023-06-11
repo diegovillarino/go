@@ -1,8 +1,8 @@
 package user_services
 
 import (
-	m "../../models"
-	userRepository "../../repositories/user.repository"
+	m "github.com/diegovillarino/go/tree/victor_user/models"
+	userRepository "github.com/diegovillarino/go/tree/victor_user/repositories/user.repository"
 )
 
 func Create(user m.User) error {

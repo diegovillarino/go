@@ -5,8 +5,8 @@ import (
 	"strconv"
 
 	"github.com/aws/aws-lambda-go/events"
-	"github.com/diegovillarino/go/database"
-	"github.com/diegovillarino/go/models"
+	"github.com/diegovillarino/go/tree/victor_user/database"
+	"github.com/diegovillarino/go/tree/victor_user/models"
 )
 
 func ListaUsuarios(request events.APIGatewayProxyRequest, claim models.Claim) models.RespApi {

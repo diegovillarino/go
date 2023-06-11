@@ -4,8 +4,8 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/diegovillarino/go/bd"
-	"github.com/diegovillarino/go/models"
+	"github.com/diegovillarino/go/tree/victor_user/database"
+	"github.com/diegovillarino/go/tree/victor_user/models"
 	jwt "github.com/golang-jwt/jwt/v5"
 )
 
@@ -31,7 +31,7 @@ func ProcesoToken(tk string, JWTSign string) (*models.Claim, bool, string, error
 		return miClave, nil
 	})
 	if err == nil {
-		_, encontrado, _ := bd.ChequeoYaExisteUsuario(claims.Email)
+		_, encontrado, _ := database.ChequeoYaExisteUsuario(claims.Email)
 		if encontrado {
 			Email = claims.Email
 			IDUsuario = claims.ID.Hex()

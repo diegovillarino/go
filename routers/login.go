@@ -7,15 +7,15 @@ import (
 	"time"
 
 	"github.com/aws/aws-lambda-go/events"
-	"github.com/diegovillarino/go/bd"
-	"github.com/diegovillarino/go/jwt"
-	"github.com/diegovillarino/go/models"
+	"github.com/diegovillarino/go/tree/victor_user/database"
+	"github.com/diegovillarino/go/tree/victor_user/jwt"
+	"github.com/diegovillarino/go/tree/victor_user/models"
 )
 
 /*Login realiza el login */
 func Login(ctx context.Context) models.RespApi {
 
-	var t models.Usuario
+	var t models.User
 	var r models.RespApi
 	r.Status = 400
 
@@ -31,7 +31,7 @@ func Login(ctx context.Context) models.RespApi {
 		return r
 	}
 
-	userData, existe := bd.IntentoLogin(t.Email, t.Password)
+	userData, existe := database.IntentoLogin(t.Email, t.Password)
 	if !existe {
 		r.Message = "Usuario y/o Contraseña inválidos "
 		return r

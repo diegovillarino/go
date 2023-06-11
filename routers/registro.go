@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/diegovillarino/go/bd"
-	"github.com/diegovillarino/go/models"
+	"github.com/diegovillarino/go/tree/victor_user/database"
+	"github.com/diegovillarino/go/tree/victor_user/models"
 )
 
 /*Registro es la funcion para crear en la BD el registro de usuario */
@@ -37,14 +37,14 @@ func Registro(ctx context.Context) models.RespApi {
 		return r
 	}
 
-	_, encontrado, _ := bd.ChequeoYaExisteUsuario(t.Email)
+	_, encontrado, _ := database.ChequeoYaExisteUsuario(t.Email)
 	if encontrado {
 		r.Message = "Ya existe un usuario registrado con ese email"
 		fmt.Println(r.Message)
 		return r
 	}
 
-	_, status, err := bd.InsertoRegistro(t)
+	_, status, err := database.InsertoRegistro(t)
 	if err != nil {
 		r.Message = "Ocurrió un error al intentar realizar el registro de usuario " + err.Error()
 		fmt.Println(r.Message)

@@ -5,9 +5,9 @@ import (
 	"fmt"
 
 	"github.com/aws/aws-lambda-go/events"
-	"github.com/diegovillarino/go/jwt"
-	"github.com/diegovillarino/go/models"
-	"github.com/diegovillarino/go/routers"
+	"github.com/diegovillarino/go/tree/victor_user/jwt"
+	"github.com/diegovillarino/go/tree/victor_user/models"
+	"github.com/diegovillarino/go/tree/victor_user/routers"
 )
 
 func Manejadores(ctx context.Context, request events.APIGatewayProxyRequest) models.RespApi {
@@ -45,12 +45,12 @@ func Manejadores(ctx context.Context, request events.APIGatewayProxyRequest) mod
 			return routers.ModificarPerfil(ctx, claim)
 		}
 	case "DELETE":
-		switch ctx.Value(models.Key("path")).(string) {
-		case "eliminarTweet": // listo
-			return routers.EliminarTweet(request, claim)
-		case "bajaRelacion": // listo
-			return routers.BajaRelacion(request, claim)
-		}
+		// switch ctx.Value(models.Key("path")).(string) {
+		// case "eliminarTweet": // listo
+		// 	return routers.EliminarTweet(request, claim)
+		// case "bajaRelacion": // listo
+		// 	return routers.BajaRelacion(request, claim)
+		// }
 	}
 
 	r.Status = 400

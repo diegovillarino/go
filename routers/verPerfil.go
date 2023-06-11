@@ -5,8 +5,8 @@ import (
 	"fmt"
 
 	"github.com/aws/aws-lambda-go/events"
-	"github.com/diegovillarino/go/bd"
-	"github.com/diegovillarino/go/models"
+	"github.com/diegovillarino/go/tree/victor_user/database"
+	"github.com/diegovillarino/go/tree/victor_user/models"
 )
 
 func VerPerfil(request events.APIGatewayProxyRequest) models.RespApi {
@@ -21,7 +21,7 @@ func VerPerfil(request events.APIGatewayProxyRequest) models.RespApi {
 		return r
 	}
 
-	perfil, err := bd.BuscoPerfil(ID)
+	perfil, err := database.BuscoPerfil(ID)
 	if err != nil {
 		r.Message = "Ocurrió un error al intentar buscar el registro " + err.Error()
 		return r

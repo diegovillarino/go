@@ -4,23 +4,18 @@ import (
 	"context"
 	"time"
 
-	"github.com/diegovillarino/go/models"
+	"github.com/diegovillarino/go/tree/victor_user/models"
 	jwt "github.com/golang-jwt/jwt/v5"
 )
 
-func GeneroJWT(ctx context.Context, t models.Usuario) (string, error) {
+func GeneroJWT(ctx context.Context, t models.User) (string, error) {
 
 	jwtSign := ctx.Value(models.Key("jwtSign")).(string)
 	miClave := []byte(jwtSign)
 
 	payload := jwt.MapClaims{
 		"email":            t.Email,
-		"nombre":           t.Nombre,
-		"apellidos":        t.Apellidos,
-		"fecha_nacimiento": t.FechaNacimiento,
-		"biografia":        t.Biografia,
-		"ubicacion":        t.Ubicacion,
-		"sitioweb":         t.SitioWeb,
+		"name":           	t.Name,
 		"_id":              t.ID.Hex(),
 		"exp":              time.Now().Add(time.Hour * 24).Unix(),
 	}

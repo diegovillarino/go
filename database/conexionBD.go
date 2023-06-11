@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/diegovillarino/go/models"
+	"github.com/diegovillarino/go/tree/victor_user/models"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )

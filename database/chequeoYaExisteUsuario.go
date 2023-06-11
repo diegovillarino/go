@@ -4,11 +4,11 @@ import (
 	"context"
 	"time"
 
-	"github.com/diegovillarino/go/models"
+	"github.com/diegovillarino/go/tree/victor_user/models"
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-func ChequeoYaExisteUsuario(email string) (models.Usuario, bool, string) {
+func ChequeoYaExisteUsuario(email string) (models.User, bool, string) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
@@ -17,7 +17,7 @@ func ChequeoYaExisteUsuario(email string) (models.Usuario, bool, string) {
 
 	condicion := bson.M{"email": email}
 
-	var resultado models.Usuario
+	var resultado models.User
 
 	err := col.FindOne(ctx, condicion).Decode(&resultado)
 	ID := resultado.ID.Hex()
